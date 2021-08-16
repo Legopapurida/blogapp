@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block header %}
+{% endblock header %}
+{% block footer %}
+{% endblock footer %}
+{% block body %}
+    <div class="alert alert-success">You logged out successfully</div>
+    <div class="border-top pt-3 pb-2">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log In Again</a>
+        </small>
+    </div>  
+{% endblock body %}

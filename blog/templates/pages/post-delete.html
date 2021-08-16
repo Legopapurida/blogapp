@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="col-lg-8 col-sm-12 mb-3">
+        <div class="card p-3">
+            <form method="POST" class="pb-3">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Delete Post</legend>
+                    <h2>Are you sure you want to delete the post "{{object.title}}"</h2>
+                    <div class="form-group mt-2">
+                        <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                        <a class="btn btn-outline-secondary" href="{% url 'post-detail' object.id %}">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-12">
+        {% include 'components/sidebar/sidebar.html' %}
+    </div>
+{% endblock body %}

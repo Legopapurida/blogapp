@@ -1,0 +1,12 @@
+
+{% for post in posts %}
+    <article class="card w-100 mb-5">
+        <div class="card-body">
+            <img class="rounded-circle col-1" src="{{post.author.profile.image.url}}" alt="" srcset="">
+            <h6 class="card-subtitle mb-2 text-muted mt-1">By <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a> On {{post.date_posted|date:"F d, Y"}}</h6>
+            <h5 class="card-title"><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></h5>
+            <p class="card-text">{{post.content}}</p>
+            <a href="{% url 'post-detail' post.id %}" class="card-link">Read more >></a>
+        </div>
+    </article>
+{% endfor %}

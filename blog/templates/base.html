@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django - 
+        {% block title %}
+            {% if title %}
+                {{title}}
+            {% else %}
+                Blog
+            {% endif %}
+        {% endblock title %}
+    </title>
+    {% block meta %}{% endblock meta %}
+    {% block links %}
+       <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    {% endblock links %}
+</head>
+<body>
+    {% block header %}
+        {% include 'components/header/navbar.html' %}
+    {% endblock header %}
+    <div class="container mt-5">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row">
+            
+            {% block body %}{% endblock body %}
+        </div>
+    </div>
+    {% block footer %}{% endblock footer %}
+    {% block scripts %}
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    {% endblock scripts %}
+</body>
+</html>

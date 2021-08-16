@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block header %}
+{% endblock header %}
+{% block footer %}
+{% endblock footer %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <div class="card">
+        <form method="POST" class="pb-3">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {{form|crispy}}
+                <div class="form-group mt-2">
+                    <button class="btn btn-outline-info" type="submit">Sing Up</button>
+                </div>
+            </fieldset>
+        </form>
+        <div class="border-top pt-3 pb-2">
+            <small class="text-muted">
+                Already have an account? <a href="{% url 'login' %}" class="ml-2">Sign In</a>
+            </small>
+        </div>    
+    </div>
+{% endblock body %}
